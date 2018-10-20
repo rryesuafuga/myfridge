@@ -22,8 +22,7 @@
                   
                   
                   # more calculations needed here
-                  volume_taken <<- as.numeric(as.matrix(fridge_content[,2]) %*%
-                                      as.matrix(fridge_content[,3]))
+                  # volume_taken <<- (fridge_content[,2] %*% fridge_content[,3])
                   
                   free_space <<- fridge_volume - volume_taken
                   
