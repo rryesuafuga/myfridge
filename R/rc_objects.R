@@ -22,10 +22,12 @@
                   
                   
                   # more calculations needed here
-                  # volume_taken <<- (fridge_content[,2] %*% fridge_content[,3])
+                  volume_taken <<- as.numeric(fridge_content$amount %*% 
+                                   fridge_content$unit_space)
                   
                   free_space <<- fridge_volume - volume_taken
                   
+                  # initialisations
                   .self$fridge_content <- fridge_content
                   .self$fridge_volume <- fridge_volume
                   .self$volume_taken <- volume_taken
