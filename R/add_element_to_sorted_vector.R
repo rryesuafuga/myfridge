@@ -17,16 +17,10 @@ add_element_to_sorted_vector <- function(v, n)
     if(n > v[i])  { v_new <- c(v_new, v[i])
 
     # greater than n but n not in v
-    } else if((n > v[i]) & (!(n %in% v_new)))  { v_new <- c(v_new, n)
-
-    # greater than n but n already in v
-    # if((n > v[i]) & (n %in% v_new))
-    } else { v_new <- c(v_new, v[i]) }
+    } else if((n < v[i]) & (!(n %in% v)))  { v_new <- c(v_new, n, v[i])
     
-    
-
-    
-    print(v_new)
+    }else { }
+   
   }
   
   return(v_new)
