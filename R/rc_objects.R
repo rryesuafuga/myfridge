@@ -1,5 +1,8 @@
 
 
+#' @import methods
+#' @exportClass fridge
+
 # The function is called "create_fridge" and the object is called "fridge"
   create_fridge <-  setRefClass("fridge",
               
@@ -43,7 +46,7 @@
                 
                 # more methods follow here
                 
-                add_to_fridge = function(added_fridge_content) {
+                add_to_fridge = function(.self, added_fridge_content) {
                 
                    stopifnot(is.data.frame(added_fridge_content))
                    stopifnot(ncol(added_fridge_content)==3)
@@ -53,18 +56,18 @@
                               c("product_id", "amount", "unit_space"))
 
                    if(added_fridge_content$product_id %in%
-                      fridge_content$product_id){
+                      .self$fridge_content$product_id){
                   
-                     fridge_content$amount[ which(added_fridge_content$product_id %in%
-                     fridge_content$product_id)] <<-
+                     .self$fridge_content$amount[ which(added_fridge_content$product_id %in%
+                     .self$fridge_content$product_id)] <<-
                      added_fridge_content$amount +
-                     fridge_content$amount[ which(added_fridge_content$product_id %in%
-                     fridge_content$product_id)]
+                     .self$fridge_content$amount[ which(added_fridge_content$product_id %in%
+                     .self$fridge_content$product_id)]
                   
                    } else(!(added_fridge_content$product_id %in%
-                             fridge_content$product_id))
-                       fridge_content <<-
-                      rbind(fridge_content, added_fridge_content)
+                             .self$fridge_content$product_id))
+                       .self$fridge_content <<-
+                      rbind(.self$fridge_content, added_fridge_content)
 
                   }
                   
